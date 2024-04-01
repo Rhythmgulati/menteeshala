@@ -1,0 +1,54 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./login.css">
+    <title>Mentors - Register</title>
+</head>
+<body>
+    <div class="container">
+
+        <div class="left-box">
+
+            <img src="./logo.jpg" alt="">
+
+
+        </div>
+        <div class="right-box">
+           
+
+            <div class="containers">
+                <div class="loader">
+                    <span class="loader-text">Mentors...</span>
+                    </div>
+                <form action="/mentorregister" method="post" class="form">
+                    <input required="" class="input" type="fname" name="fname" id="fname" placeholder="First Name">
+                    <input required="" class="input" type="lname" name="lname" id="lname" placeholder="Last Name">
+                    <input required="" class="input" type="email" name="email" id="email" placeholder="E-mail">
+                   <input required="" class="input" type="password" name="password" id="password" placeholder="Password">
+                   <div class="radio-container">
+                    <label for="ug"> <input type="radio" class="iradio" value="ug" name="study_level" id="ug" onclick="handleRadioChange(this)">Undergraduate</label>
+                    <label for="pg"> <input type="radio" class="iradio" value="pg" name="study_level" id="pg" onclick="handleRadioChange(this)">Postgraduate</label>
+                </div>
+                <div class="dropDown" id="dropDown">
+                    
+                </div>
+
+                <textarea name="exp" style="height: 100px;" id="exp" class="input" placeholder="Web developer and having more than 3 years of experience"></textarea>
+
+                  <input class="login-button" type="submit" value="Register">
+                  
+                </form>
+                
+                 
+              </div>
+        
+        </div>
+            
+
+    </div>
+
+<script src="./regmentor.js"></script>
+ 
+</body>
+</html>
