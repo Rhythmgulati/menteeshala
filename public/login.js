@@ -1,5 +1,6 @@
 const mentee =  document.getElementById('mentee')
 const mentor = document.getElementById('mentor')
+const form = document.querySelector(".form");
 let mn = true;
 let mt = false;
 mentee.addEventListener('click',()=>{
@@ -12,21 +13,23 @@ mentee.addEventListener('click',()=>{
         mentor.style.color = '#aaaaaa'
         mentor.style.borderBottom = 'none'
         mt = false
+        form.action = "/login"
     }
 
 })
 
 mentor.addEventListener('click',()=>{
     if(mt){
-
+                   
     }else{
         mentor.style.color = '#2d1b81'
         mentor.style.borderBottom = 'solid 2px #2d1b81'
         mt = true
-
         mentee.style.color = '#aaaaaa'
         mentee.style.borderBottom = 'none'
         mn = false
+        form.action = "/mentorlogin"
+
     }
 
 })
