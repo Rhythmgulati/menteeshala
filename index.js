@@ -27,6 +27,9 @@ app.get("/register",(req,res)=>{
 app.get("/mentorregister",(req,res)=>{
     res.render("regmentor");
 });
+app.get("/",(req,res)=>{
+    res.render("index");
+})
 
 // register
 
@@ -44,6 +47,7 @@ app.post("/register",async (req,res)=>{
         course
     });
     newmentee.save();
+    res.status(201).redirect("/");
 });
 
 app.post("/mentorregister",async(req,res)=>{
@@ -76,7 +80,7 @@ app.post("/login",async(req,res)=>{
   if(!isvalid){
     res.status(500).render("login")
   }
-  res.status(201).render("index")
+  res.status(201).redirect("/")
 });
 
 app.post("/mentorlogin",async(req,res)=>{
@@ -84,13 +88,15 @@ app.post("/mentorlogin",async(req,res)=>{
     const user = await Mentor.findOne({email});
     console.log(user);
     if(!user){
-      res.status(501).render("login");
+     return res.status(501).render("login");
     }
     const isvalid = await bcrypt.compare(password,user.password);
     console.log(isvalid);
     if(!isvalid){
-      res.status(500).render("login")
+    return  res.status(500).render("login",{msg:"⚠ Invalid email or password"})
     }
-    res.status(201).render("index");
-})
+    res.status(201).redirect("/");
+});
+
+
 app.listen(PORT,()=>console.log(`Listening to port ${PORT}`));

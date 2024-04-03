@@ -241,6 +241,9 @@ border-radius: 10px 10px 10px 10px;
     color: #2d1b81;
     font-size: 9px;
   }
+  .errmsg{
+    color: red;
+  }
 
   .radio-container{
     height: 50px;
