@@ -1,0 +1,56 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./dash.css">
+    <link rel="stylesheet" href="./mentor.css">
+    <title>Mentor</title>
+</head>
+<body>
+<div class="container-box">
+    <div class="left-box">
+         <div class="loader">
+                    <span class="loader-text">Welcome...</span>
+                    </div>
+        <img src="./logo.jpg" alt="" width="100%" height="30%">
+    
+  
+    <a href="/dashboard">Dashboard</a>
+    <a href="/mentors">Mentors</a>
+    <a href="/find">Other Mentors</a>
+    <a href="/logout">Logout</a>
+
+
+    </div>
+    <div class="right-box">
+      <div class="banner">
+        <img src="./chat.png" alt="">
+
+      </div>
+      <div class="outer-container">
+          {{#each mentors}}
+         <div class="card-3">
+          <img src="./man.png" alt="">
+          <p>{{fname}} {{lname}}</p>
+          <p>Experience : {{exp}}</p>
+          <div class="action-btn">
+            <p id="status">Online</p>
+             <button>Request</button>
+          </div>
+          {{/each}}
+
+         </div>
+      </div>
+     
+       
+
+     
+
+    </div>
+
+    </div>
+
+</div>    
+    
+</body>
+</html>

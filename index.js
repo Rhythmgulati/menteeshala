@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const path = require("path");
+const cookieParser = require('cookie-parser');
 require("./db/conn")
 const PORT = process.env.PORT || 3000;
 const bodyparsser= require("body-parser");
@@ -9,6 +10,8 @@ const bcrypt = require("bcrypt");
 app.use(bodyparsser.urlencoded({extended:true}));
 const hbs = require("hbs");
 app.set("view engine","hbs");
+
+app.use(cookieParser());
 
 const staticpath = path.join(__dirname,"./public");
 app.use(express.static(staticpath));
@@ -31,6 +34,39 @@ app.get("/",(req,res)=>{
     res.render("index");
 })
 
+app.get('/mentors',async(req,res)=>{
+    try {
+        const usermail = req.cookies.usermail;
+        const user = await Mentee.findOne({email:usermail});
+        const course = user.course;
+        console.log(user);
+        console.log(course);
+        const mentors = await Mentor.find({course:course});
+        console.log(mentors);
+        res.render('mentor',{mentors:mentors});  
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+
+app.get('/dashboard',async (req,res)=>{
+    try {
+        const usermail = req.cookies.usermail;
+        const user = await Mentee.findOne({email:usermail});
+        const course = user.course;
+        console.log(user);
+        console.log(course);
+        const mentors = await Mentor.find({course:course});
+        console.log(mentors);
+        res.render('dash',{user:user,mentors:mentors});  
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+    }
+
+   });
 // register
 
 
@@ -47,7 +83,9 @@ app.post("/register",async (req,res)=>{
         course
     });
     newmentee.save();
+    res.cookie('usermail', email);
     res.status(201).redirect("/");
+   
 });
 
 app.post("/mentorregister",async(req,res)=>{
@@ -63,6 +101,7 @@ app.post("/mentorregister",async(req,res)=>{
         course,
         exp
     });
+    res.cookie('usermail', email);
     newmentor.save();
 });
 
@@ -80,6 +119,7 @@ app.post("/login",async(req,res)=>{
   if(!isvalid){
     res.status(500).render("login")
   }
+  res.cookie('usermail', email);
   res.status(201).redirect("/")
 });
 
@@ -95,6 +135,7 @@ app.post("/mentorlogin",async(req,res)=>{
     if(!isvalid){
     return  res.status(500).render("login",{msg:"⚠ Invalid email or password"})
     }
+    res.cookie('usermail', email);
     res.status(201).redirect("/");
 });
 

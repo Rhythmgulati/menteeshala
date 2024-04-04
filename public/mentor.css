@@ -1,0 +1,61 @@
+.card-3{
+    margin-top: 5%;
+    width: 90%;
+    height: 30vh;
+    background: rgb(255, 251, 251);
+    border-radius: 12px;
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.123);
+    display: flex;
+    flex-direction: column;
+     margin-left: 5%;
+    align-items: center;
+    transition-duration: .5s;
+}
+
+
+.card-3 img{
+    height: 80px;
+    width: 100px;
+}
+.card-3 p{
+    margin-top: 0;
+}
+
+.action-btn{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    padding: 16px;
+    
+
+
+}
+.action-btn button{
+     border: none;
+     border-radius: 25px;
+     height: 30px;
+     width: 100px;
+     transition: 300ms;
+     color: white;
+    background-image: var(---gradient--);
+}
+
+.action-btn button:hover{
+    transition: 300ms;
+    background-image: linear-gradient(to right, white,white);
+    border: solid 1px blue;
+    color: black;
+
+}
+.outer-container{
+    display: flex;
+   padding: 8px;
+    flex-direction: column;
+    align-items: flex-start;
+    overflow-y: scroll; /* Change to scroll */
+    overflow-x: hidden;
+    height: 100vh;
+    width: 100%;
+}
+
